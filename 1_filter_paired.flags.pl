@@ -20,10 +20,10 @@ for my $key (sort keys %fq1) {
 		if ($seq1 =~ /^GGGGGGGGGG/ and $seq2 =~ /^TTTTTTTTTTTT/) {
 			my $len1 = length($seq1);
 			my $len2 = length($seq2);
-			my $new_seq1 = substr($seq1,11,$len1-10);
-			my $new_quality1    = substr($fq1{$key}{'quality'},11,$len1-10);
-			my $new_seq2 = substr($seq2,13,$len2-12);
-			my $new_quality2    = substr($fq2{$key}{'quality'},13,$len2-12);
+			my $new_seq1 = substr($seq1,10,$len1-10);
+			my $new_quality1    = substr($fq1{$key}{'quality'},10,$len1-10);
+			my $new_seq2 = substr($seq2,12,$len2-12);
+			my $new_quality2    = substr($fq2{$key}{'quality'},12,$len2-12);
 			print OUT1 "$key\n$new_seq1\n$fq1{$key}{'strand'}\n$new_quality1\n";
 			print OUT2 "$key\n$new_seq2\n$fq2{$key}{'strand'}\n$new_quality2\n";
 		}else {next;}
