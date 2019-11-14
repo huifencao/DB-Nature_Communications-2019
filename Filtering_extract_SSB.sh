@@ -1,6 +1,5 @@
 in=$1
 
-:<<BLOCK
 #step 1. extract the proper reads started with 10Gs and 12Ts and trim them;
 perl 1_filter_paired.flags.pl $in\_1.clean.fq $in\_2.clean.fq  2>log.1
 
@@ -22,7 +21,6 @@ echo "Finish filtering sam";
 sh 4_sam2bed.right.proper.sh $in.proper.sam $in.candidates.bed 2>log.4
 echo "Finish converting bed";
 
-BLOCK
 #step 5. filtering breaks located near the genome internal high polyA regions;
 perl 5_filtering.internal.polyA.pl $in.candidates.bed Human19.fasta 20 0.4 >$in.breaks.bed 3>log.5
 echo "Extract the break positions";
